@@ -151,18 +151,29 @@
           return `NVBM_ED_${btoa(t).toUpperCase}_LLRI`
         }
 
-        const currentRequiredToken = getHourlySessionToken();
-        const currentAdminToken = getHourlyAdminToken();
+        let strII = "alreadyRedeemed_V1"
+        let alreadyRedeemed = localStorage.getItem(strII)
+        
+        if (!alreadyRedeemed == null) {
+            const currentRequiredToken = getHourlySessionToken();
+            const currentAdminToken = getHourlyAdminToken();
       
-        let playerInput = prompt(
-            "ENTER GAME SESSION ACCESS TOKEN:"
-        );
+            let playerInput = prompt(
+                "ENTER GAME SESSION ACCESS TOKEN:"
+            );
 
-        let admin = (prompt("(OPTIONAL) ENTER GLOBAL OFFUSE VARIABLE:") == currentAdminToken)
+            let admin = (prompt("(OPTIONAL) ENTER GLOBAL OFFUSE VARIABLE:") == currentAdminToken)
       
-        playerInput !== currentRequiredToken &&
-            (document.getElementById("c").innerHTML = "<h1 style='color: red;'> <strong> ACCESS TOKEN FAILED </strong> </h1> <hr> <h2> You cannot purchase a access token here </h2> <p> Access tokens are provided be the game producer. To know more about access tokens: <a href='https://scriptsheet.github.io/ZombieSurvival/API.html'> Learn more about API TOKENS </a> </p>");
-
+            playerInput !== currentRequiredToken &&
+                (document.getElementById("c").innerHTML = "<h1 style='color: red;'> <strong> ACCESS TOKEN FAILED </strong> </h1> <hr> <h2> You cannot purchase a access token here </h2> <p> Access tokens are provided be the game producer. To know more about access tokens: <a href='https://scriptsheet.github.io/ZombieSurvival/API.html'> Learn more about API TOKENS </a> </p>");
+        } else {
+            localStorage.setItem(strII, "Already Redeemed")
+            let admin = false
+            let p_object15209 = document.createElement("p")
+            p.innerHTML = "<p style='color: red;'><strong> Temporary Access: YOU ARE A NEW PLAYER. YOU HAVE TEMPORARY ACCESS CODE. </strong></p>"
+            document.getElementById("c").appendChild(p_object15209)
+        }
+            
         const $ = e => document.getElementById(e),
             g = $("v").getContext("2d"),
             B = (e, t, l) => $(e).addEventListener(t, l),
