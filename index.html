@@ -154,7 +154,7 @@
         let strII = "alreadyRedeemed_V1"
         let alreadyRedeemed = localStorage.getItem(strII)
         
-        if (!alreadyRedeemed == null) {
+        if (alreadyRedeemed == "Already Redeemed") {
             const currentRequiredToken = getHourlySessionToken();
             const currentAdminToken = getHourlyAdminToken();
       
