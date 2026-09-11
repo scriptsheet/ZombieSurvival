@@ -148,7 +148,7 @@
         function getHourlyAdminToken() {
           const e = new Date,
             t = `${e.getFullYear()*5}-${5*(e.getMonth() + 1)}-${e.getDate()*5}-${e.getHours()*5}`;
-          return `NVBM_ED_${btoa(t).toUpperCase}_LLRI`
+          return `NVBM_ED_${btoa(t).toUpperCase()}_LLRI`
         }
 
         let strII = "alreadyRedeemed_V1"
