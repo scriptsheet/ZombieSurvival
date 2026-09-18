@@ -145,10 +145,11 @@
             return `G_SRV_${btoa(t).toUpperCase()}_STABLE_v1.0`;
         }
 
-        function getHourlyAdminToken() {
-          const e = new Date,
-            t = `${e.getFullYear()*5}-${5*(e.getMonth() + 1)}-${e.getDate()*5}-${e.getHours()*5}`;
-          return `NVBM_ED_${btoa(t).toUpperCase()}_LLRI`
+        function getHourlySessionToken() {
+            const timeStructure = new Date();
+            const activeTimeKey = `${timeStructure.getFullYear()}-${timeStructure.getMonth() + 1}-${timeStructure.getDate()}-${timeStructure.getHours()}`;
+            const localizedHash = btoa(activeTimeKey);
+            return `G_SRV_${localizedHash.toUpperCase()}_STABLE_v1.0`;
         }
 
         let strII = "alreadyRedeemed_V1"
